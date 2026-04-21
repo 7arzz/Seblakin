@@ -1,8 +1,3 @@
-import imgDumplingKeju from "../assets/dumplingKeju.png";
-import imgEnoki from "../assets/enoki.png";
-import imgKrupukBawang from "../assets/krupukBawang.png";
-import imgSawi from "../assets/sawi.png";
-
 export const levels = [
   { id: 1, nama: "Level 1 😌" },
   { id: 2, nama: "Level 2 🔥" },
@@ -45,3 +40,5 @@ export const items = [
   { id: 27, nama: "Dumpling Ayam", harga: 2000 },
   { id: 28, nama: "Sosis Besar", harga: 2000 },
 ];
+
+export const noTelp = "6282141276392";

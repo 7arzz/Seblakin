@@ -1,3 +1,5 @@
+import { noTelp } from "../data/data";
+
 function Cart({
   namaPelanggan,
   nomorMeja,
@@ -27,7 +29,7 @@ function Cart({
           <span className="cart-total-value">Rp{total.toLocaleString()}</span>
         </div>
         <a
-          href={`https://wa.me/6282141276392?text=${generateMessage()}`}
+          href={`https://wa.me/${noTelp}?text=${generateMessage()}`}
           target="_blank"
           className={isValid ? "btn" : "btn disabled"}
         >
