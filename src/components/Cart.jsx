@@ -1,14 +1,14 @@
-function Cart({ nomorMeja, selectedLevel, selectedItems, catatan, total }) {
+function Cart({ namaPelanggan, nomorMeja, selectedLevel, selectedItems, catatan, total }) {
   const generateMessage = () => {
     const list = selectedItems.map((i) => `- ${i.nama} x${i.qty || 1}`).join("\n");
     const notesStr = catatan ? `\nCatatan: ${catatan}` : "";
 
-    const text = `Halo kak, saya di meja ${nomorMeja}\n\nPesan:\nLevel: ${selectedLevel?.nama || "-"}\nIsi:\n${list || "-"}\n${notesStr}\n\nTotal: Rp${total.toLocaleString()}`;
+    const text = `Halo kak, saya ${namaPelanggan} di meja ${nomorMeja}\n\nPesan:\nLevel: ${selectedLevel?.nama || "-"}\nIsi:\n${list || "-"}\n${notesStr}\n\nTotal: Rp${total.toLocaleString()}`;
     
     return encodeURIComponent(text);
   };
 
-  const isValid = nomorMeja && selectedLevel;
+  const isValid = namaPelanggan && nomorMeja && selectedLevel;
 
   return (
     <div className="cart-summary">

@@ -7,8 +7,10 @@ import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FloatingDecorations from "./components/FloatingDecorations";
+import InputNama from "./components/InputNama";
 
 function App() {
+  const [namaPelanggan, setNamaPelanggan] = useState("");
   const [nomorMeja, setNomorMeja] = useState("");
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
@@ -25,6 +27,7 @@ function App() {
       <Header />
 
       <div className="content-wrapper">
+        <InputNama namaPelanggan={namaPelanggan} setNamaPelanggan={setNamaPelanggan} />
         <InputMeja nomorMeja={nomorMeja} setNomorMeja={setNomorMeja} />
 
         <LevelSelector
@@ -41,6 +44,7 @@ function App() {
       </div>
 
       <Cart
+        namaPelanggan={namaPelanggan}
         nomorMeja={nomorMeja}
         selectedLevel={selectedLevel}
         selectedItems={selectedItems}
