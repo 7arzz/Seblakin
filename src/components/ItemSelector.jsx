@@ -42,12 +42,14 @@ function ItemSelector({ selectedItems, setSelectedItems }) {
             <div
               key={item.id}
               className={`checkbox-card ${isSelected ? "selected" : ""}`}
+              onClick={() => increaseQty(item)}
+              style={{ cursor: 'pointer' }}
             >
               <div className="item-info">
                 <span className="item-name">{item.nama}</span>
                 <span className="item-price">Rp{item.harga.toLocaleString()}</span>
               </div>
-              <div className="qty-controls">
+              <div className="qty-controls" onClick={(e) => e.stopPropagation()}>
                 {isSelected && (
                   <>
                     <button

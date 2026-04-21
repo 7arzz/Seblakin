@@ -22,7 +22,6 @@ export const items = [
   { id: 3, nama: "Bakso", harga: 2000 },
   { id: 4, nama: "Ceker", harga: 3000 },
   { id: 5, nama: "Dumpling Keju", harga: 4000 },
-  { id: 6, nama: "Enoki", harga: 5000 },
   { id: 7, nama: "Sawi", harga: 2000 },
   { id: 8, nama: "Otak-Otak", harga: 2000 },
   { id: 9, nama: "Siomay", harga: 2000 },

@@ -6,6 +6,7 @@ import CatatanPelanggan from "./components/CatatanPelanggan";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import FloatingDecorations from "./components/FloatingDecorations";
 
 function App() {
   const [nomorMeja, setNomorMeja] = useState("");
@@ -19,6 +20,7 @@ function App() {
     <div className="app-container">
       <div className="blob blob-tl"></div>
       <div className="blob blob-br"></div>
+      <FloatingDecorations />
       
       <Header />
 

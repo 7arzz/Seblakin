@@ -70,23 +70,25 @@ body {
     margin: 40px auto;
     border-radius: var(--radius-lg);
     min-height: calc(100vh - 80px);
-    overflow: hidden;
+    /* overflow: hidden dihapus — merusak stacking context & sticky positioning */
   }
   
   .content-wrapper {
     padding: 32px;
+    padding-bottom: 180px; /* pastikan tidak tertutup cart */
     gap: 32px;
   }
 }
 
 .content-wrapper {
   padding: 20px;
+  padding-bottom: 180px; /* Buffer for cart — diperbesar agar tombol tidak tertutup */
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  z-index: 2;
-  padding-bottom: 150px; /* Buffer for cart */
+  position: relative;
+  z-index: 1;
 }
 
 /* --- Background Decor --- */
@@ -98,8 +100,9 @@ body {
   filter: blur(100px);
   border-radius: var(--radius-full);
   opacity: 0.15;
-  z-index: 0;
+  z-index: -1; /* di bawah semua konten agar tidak memblokir klik */
   pointer-events: none;
+  user-select: none;
 }
 
 .blob-tl { top: -100px; left: -100px; }
@@ -274,9 +277,9 @@ body {
 }
 
 .qty-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   border: none;
   background: var(--bg-card);
   color: var(--primary);
@@ -313,9 +316,12 @@ body {
   padding: 24px;
   background: var(--glass);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 100;
+  z-index: 50;
   margin-top: auto;
+  /* pointer-events aktif agar tombol bisa diklik */
+  pointer-events: auto;
 }
 
 @media (min-width: 600px) {
@@ -384,10 +390,48 @@ body {
   pointer-events: none;
 }
 
+/* --- Floating Decorations --- */
+.floating-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-asset {
+  position: absolute;
+  width: 60px;
+  height: auto;
+  opacity: 0.6;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.cabe-1 { top: 10%; left: 5%; animation-delay: 0s; width: 40px; }
+.dumpling-1 { top: 25%; right: 10%; animation-delay: 1s; width: 50px; }
+.enoki-1 { bottom: 30%; left: 8%; animation-delay: 1.5s; width: 60px; }
+.cabe-2 { bottom: 15%; right: 12%; animation-delay: 2s; width: 35px; }
+.krupuk-1 { top: 45%; left: 15%; animation-delay: 0.5s; width: 45px; opacity: 0.4; }
+.sawi-1 { top: 60%; right: 5%; animation-delay: 2.5s; width: 55px; }
+
+@media (max-width: 600px) {
+  .floating-asset { width: 40px; }
+}
+
 /* --- Footer --- */
 .footer {
-  padding: 20px 20px 40px;
+  padding: 40px 20px;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.85rem;
+  opacity: 0.7;
 }
