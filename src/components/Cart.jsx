@@ -1,10 +1,19 @@
-function Cart({ namaPelanggan, nomorMeja, selectedLevel, selectedItems, catatan, total }) {
+function Cart({
+  namaPelanggan,
+  nomorMeja,
+  selectedLevel,
+  selectedItems,
+  catatan,
+  total,
+}) {
   const generateMessage = () => {
-    const list = selectedItems.map((i) => `- ${i.nama} x${i.qty || 1}`).join("\n");
+    const list = selectedItems
+      .map((i) => `- ${i.nama} x${i.qty || 1}`)
+      .join("\n");
     const notesStr = catatan ? `\nCatatan: ${catatan}` : "";
 
     const text = `Halo kak, saya ${namaPelanggan} di meja ${nomorMeja}\n\nPesan:\nLevel: ${selectedLevel?.nama || "-"}\nIsi:\n${list || "-"}\n${notesStr}\n\nTotal: Rp${total.toLocaleString()}`;
-    
+
     return encodeURIComponent(text);
   };
 
@@ -18,7 +27,7 @@ function Cart({ namaPelanggan, nomorMeja, selectedLevel, selectedItems, catatan,
           <span className="cart-total-value">Rp{total.toLocaleString()}</span>
         </div>
         <a
-          href={`https://wa.me/628xxxxxxxxxx?text=${generateMessage()}`}
+          href={`https://wa.me/6282141276392?text=${generateMessage()}`}
           target="_blank"
           className={isValid ? "btn" : "btn disabled"}
         >
